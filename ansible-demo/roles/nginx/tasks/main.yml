@@ -1,0 +1,31 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Deploy Nginx index page
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - Restart Nginx
+
+- name: Ensure Nginx is enabled
+  systemd:
+    name: nginx
+    enabled: yes
+
+- name: Ensure Nginx is running
+  systemd:
+    name: nginx
+    state: started
+...

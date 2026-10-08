@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ansible Demo</title>
+</head>
+
+<body>
+
+<h1>Nginx Managed by Ansible</h1>
+
+<p>Server hostname: {{ ansible_hostname }}</p>
+
+<p>Server IP: {{ ansible_default_ipv4.address }}</p>
+
+<p>This server was configured automatically using Ansible.</p>
+
+</body>
+</html>
